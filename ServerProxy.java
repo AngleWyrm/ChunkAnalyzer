@@ -5,6 +5,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class ServerProxy implements IGuiHandler {
+	
+	public static String ITEMS_PNG  = "/chunkanalyzer/Items.png";
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
@@ -19,5 +21,4 @@ public class ServerProxy implements IGuiHandler {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
