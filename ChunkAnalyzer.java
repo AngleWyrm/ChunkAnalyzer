@@ -26,7 +26,6 @@ public class ChunkAnalyzer
 {
 	public static Item analyzer;
 	private int ChunkAnalyzerItemID;
-	private IGuiHandler guiHandler;
 	
 	@Instance
 	public static ChunkAnalyzer instance;
@@ -49,9 +48,6 @@ public class ChunkAnalyzer
 	{
 		analyzer = new Analyzer(ChunkAnalyzerItemID).setItemName("Chunk Analyzer");
 		LanguageRegistry.addName(analyzer, "Chunk Analyzer");
-		
-		guiHandler = new GuiHandler();
-		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 	}
 	
 	public String Version() {
