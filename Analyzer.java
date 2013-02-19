@@ -16,9 +16,9 @@ public class Analyzer extends Item {
 		setIconIndex(1);
 	}
 	
-    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
     {
-             ModLoader.openGUI(entityPlayer, new GuiAnalyzer());
+             ModLoader.openGUI(player, new GuiAnalyzer(player));
                     return itemStack;
     }
 	
