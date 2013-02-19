@@ -9,13 +9,14 @@ import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = "ChunkAnalyzer", name = "ChunkAnalyzer", version = "15 Feb 2012")
 
-@NetworkMod(
-	channels = { "ChunkAnalyzer" },
+@NetworkMod( channels = {"ChunkAnalyzer"},
 	clientSideRequired = true,
 	serverSideRequired = false,
 	packetHandler = PacketHandler.class 
@@ -25,6 +26,7 @@ public class ChunkAnalyzer
 {
 	public static Item analyzer;
 	private int ChunkAnalyzerItemID;
+	private IGuiHandler guiHandler;
 	
 	@Instance
 	public static ChunkAnalyzer instance;
@@ -47,6 +49,9 @@ public class ChunkAnalyzer
 	{
 		analyzer = new Analyzer(ChunkAnalyzerItemID).setItemName("Chunk Analyzer");
 		LanguageRegistry.addName(analyzer, "Chunk Analyzer");
+		
+		guiHandler = new GuiHandler();
+		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 	}
 	
 	public String Version() {

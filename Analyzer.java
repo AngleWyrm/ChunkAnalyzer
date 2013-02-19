@@ -19,8 +19,12 @@ public class Analyzer extends Item {
 	@Override
     public boolean onItemUse(ItemStack items, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
 	{
-		return false;
+		if(world.isRemote) return false;
+		player.openGui(ChunkAnalyzer.instance, 0, world, x, y, z);
+		return true;
 	}
+	
+	
 		
 	@Override
 	public String getTextureFile(){
